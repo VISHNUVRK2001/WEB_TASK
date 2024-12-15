@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amiso Website</title>
+    <!-- FontAwesome for icons (if needed in the future) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.5); /* 50% opacity white */
+        }
+        .text-outline {
+            text-shadow: 2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black;
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+        .text-light-green {
+            color: #ddff00; /* Light green color */
+        }
+
+        /* New Section Styling */
+        .services {
+            padding: 50px;
+            text-align: center;
+            background-color: #90ee90; /* Light green background */
+        }
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .services p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .service-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .service-card {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .service-card img {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+        }
+        .service-card h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .service-card img {
+            width: 60px;  /* Width of the icon */
+            height: 60px; /* Height of the icon */
+            margin: 0 auto 15px; /* Centering the icon and giving space below */
+        }
+
+        /* General Section Styling */
+.recent-news {
+  padding: 40px;
+  text-align: center;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.recent-news h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.recent-news p {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+/* News Items Styling */
+.news-items {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.news-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Date Box Styling */
+.news-date {
+  background: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.news-date .date {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.news-date .month {
+  text-transform: uppercase;
+}
+
+/* Image Styling */
+.news-item img {
+  width: 100%;
+  height: auto;
+}
+
+/* News Content Styling */
+.news-content {
+  padding: 20px;
+}
+
+.news-content .category {
+  font-size: 12px;
+  color: #007bff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.news-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.news-content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Author Section Styling */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+}
+
+.author span {
+  font-size: 12px;
+  color: #777;
+}
+
+.author span:first-of-type {
+  font-weight: bold;
+  color: #333;
+}
+
+
+/* Footer Styles */
+footer {
+  background-color: #f8f9fa;
+  padding: 40px 20px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+}
+
+.logo-section img {
+  max-width: 150px;
+  margin-bottom: 10px;
+}
+
+.logo-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.contact-section h3,
+.links-section h3,
+.newsletter-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.contact-section p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.links-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links-section ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.links-section ul li:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.newsletter-section form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.newsletter-section input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.newsletter-section button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter-section button:hover {
+  background-color: #0056b3;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+.footer-bottom .social-icons {
+  margin-top: 10px;
+}
+
+.footer-bottom .social-icons span {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 16px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.footer-bottom .social-icons span:hover {
+  color: #0056b3;
+}
+
+
+
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-transparent fixed top-0 left-0 w-full z-20 py-4" style="padding-left: 3cm; padding-right: 3cm;">
+        <div class="flex justify-between items-center">
+            <!-- Left Side: Contact Info -->
+            <div class="flex items-center space-x-6 text-white">
+                <!-- Phone Icon and Number -->
+                <div class="flex items-center">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="ml-2">+1 234 567 890</span>
+                </div>
+                <!-- Email Icon and Address -->
+                <div class="flex items-center">
+                    <i class="fas fa-envelope"></i>
+                    <span class="ml-2">info@amiso.com</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Social Media Icons and Button -->
+            <div class="flex items-center space-x-6">
+                <div class="flex space-x-4 text-white">
+                    <!-- Social Media Icons -->
+                    <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gray-300"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <!-- Get a Quote Button -->
+                <button class="bg-blue-500 text-white font-bold px-4 py-2 flex items-center rounded shadow hover:bg-blue-600">
+                    <i class="fas fa-calculator mr-2"></i> GET A QUOTE
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed top-20 left-0 w-full py-4 z-10">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+            <!-- Left: Logo and Brand -->
+            <div class="flex items-center space-x-2">
+                <div class="bg-gray-300 w-10 h-10 rounded-full"></div> <img src="img\logo1.png" alt="Amiso Logo">
+                <span class="text-black font-bold text-xl">Amiso</span>
+            </div>
+
+            <!-- Right: Navigation Links -->
+            <div class="flex space-x-6 text-gray-700">
+                <a href="#" class="hover:text-gray-900">HOME</a>
+                <a href="#" class="hover:text-gray-900">ABOUT</a>
+                <a href="#" class="hover:text-gray-900">PAGES</a>
+                <a href="#" class="hover:text-gray-900">GALLERY</a>
+                <a href="#" class="hover:text-gray-900">BLOG</a>
+                <a href="#" class="hover:text-gray-900">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="relative">
+            <!-- Hero Image -->
+            <img src="img/header.jpg" alt="Cleaning services hero image with a woman holding cleaning tools and looking amazed" class="w-full h-screen object-cover">
+            <!-- Overlay Content -->
+            <div class="absolute inset-0 flex flex-col justify-center items-center text-light-green">
+                <h1 class="text-6xl font-bold text-outline text-glow">A TRADITION OF QUALITY CLEANING</h1>
+                <p class="text-xl mt-4 text-outline text-glow">Renew your look</p>
+            </div>
+        </section>
+
+        <!-- New Section: Our Services with Light Green Background -->
+        <section class="services">
+            <h2>Our Services</h2>
+            <p>We offer a wide range of cleaning services to suit your needs.</p>
+            <div class="service-cards">
+                <div class="service-card">
+                    <!-- Placeholder Image for Icon -->
+                    <img src="img\icon 1.png" alt="Residential Cleaning Icon">
+                    <h3>Residential Cleaning</h3>
+                    <p>Keep your home spotless with our expert cleaning team.</p>
+                </div>
+                <div class="service-card">
+                    <!-- Placeholder Image for Icon -->
+                    <img src="img\icon 2.png" alt="Commercial Cleaning Icon">
+                    <h3>Commercial Cleaning</h3>
+                    <p>Efficient and professional cleaning for your workspace.</p>
+                </div>
+                <div class="service-card">
+                    <!-- Placeholder Image for Icon -->
+                    <img src="img\icon 3.png" alt="Deep Cleaning Icon">
+                    <h3>Deep Cleaning</h3>
+                    <p>Thorough and detailed cleaning services for every corner.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section style="margin-top: 50px; padding: 50px; background-color: #f9f9f9;">
+  <div style="text-align: center;">
+    <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 20px;">Why Choose Us</h2>
+    <h1 style="font-size: 50px; font-weight: bold;color: navy; margin-bottom: 20px;">Tradition of Trust</h2>
+    <p style="font-size: 16px; color: #666; margin-bottom: 40px;">We specialise in intelligent & effective Search and believe in the power of partnerships to grow business.</p>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 50px;">
+    <!-- Circle 1 -->
+    <div style="text-align: center; width: 200px;">
+      <div style="
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <img src="img\icon 4.png" alt="Icon" style="max-width: 60%; max-height: 60%;">
+      </div>
+      <h3 style="font-size: 18px; margin-top: 15px;">Professional Team</h3>
+      <p style="font-size: 14px; color: #666;">Our team uses a sanitizing solution to wipe down light switches doorknobs.</p>
+    </div>
+
+    <!-- Circle 2 -->
+    <div style="text-align: center; width: 200px;">
+      <div style="
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <img src="img\icon 5.png" alt="Icon" style="max-width: 60%; max-height: 60%;">
+      </div>
+      <h3 style="font-size: 18px; margin-top: 15px;">24/7 Services</h3>
+      <p style="font-size: 14px; color: #666;">We encourage our customers to let us know in advance of an appointment.</p>
+    </div>
+
+    <!-- Circle 3 -->
+    <div style="text-align: center; width: 200px;">
+      <div style="
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <img src="img\icon 6.png" alt="Icon" style="max-width: 60%; max-height: 60%;">
+      </div>
+      <h3 style="font-size: 18px; margin-top: 15px;">Service Guarantee</h3>
+      <p style="font-size: 14px; color: #666;">We are telling our team members to switch out all cleaning cloths and mopheads.</p>
+    </div>
+  </div>
+</section>
+<section style="display: flex; align-items: center; background-color: #f0f0f0; padding: 50px; position: relative;">
+    <!-- Left Side: Image -->
+    <div style="flex: 1; text-align: left;">
+        <img src="img/young-beautiful-girl-apron.jpg" alt="Image Description" style="width: 100%; height: auto; border-radius: 10px;">
+    </div>
+
+    <!-- Right Side: Content -->
+    <div style="flex: 1; background-color: white; padding: 40px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+        <h3 style="font-size: 16px; color: gray; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">MAID FOR YOU</h3>
+        <h2 style="font-size: 2rem; font-weight: bold; color: #333; margin-bottom: 20px;">A Cleaner Place is a Safer Place.</h2>
+        <p style="font-size: 1rem; color: #555; margin-bottom: 20px;">
+            Washla cleaning service. We are a company dedicated to giving our customers back the time they deserve to enjoy the things they love.
+        </p>
+        <div style="display: flex; gap: 30px;">
+            <!-- Box 1 -->
+            <div style="text-align: left;">
+                <img src="img/icon 7.png" alt="Professional Cleaning" style="width: 40px; height: 40px; margin-bottom: 10px;">
+                <h3 style="font-size: 1rem; font-weight: bold; color: #333;">Professional Cleaning</h3>
+                <p style="font-size: 0.9rem; color: #555;">Housekeeping is responsible for minor security in hotel.</p>
+            </div>
+
+            <!-- Box 2 -->
+            <div style="text-align: left;">
+                <img src="img/icon 8.png" alt="Fast and Efficient" style="width: 40px; height: 40px; margin-bottom: 10px;">
+                <h3 style="font-size: 1rem; font-weight: bold; color: #333;">Fast and Efficient</h3>
+                <p style="font-size: 0.9rem; color: #555;">Both of us take a lot of time in getting cleaned Clean Home.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section with Background Image -->
+<section style="
+    position: relative;
+    background-image: url('img/back3.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 600px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    color: white; 
+    padding: 20px;">
+    
+    <!-- Content Inside the Background -->
+    <div style="background: rgba(0, 0, 0, 0.6); padding: 30px; border-radius: 10px; max-width: 600px;">
+        <p style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">WHY CHOOSE US</p>
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">Our Great Service</h2>
+        <p style="font-size: 1.1rem; line-height: 1.5;">
+            Restoring the beauty and freshness of all your upholstered fabrics and take the work out of housework for you.
+        </p>
+    </div>
+
+    <!-- Section with Three Overlay Boxes -->
+    <div style="
+        position: absolute;
+        bottom: -60px; /* Move boxes slightly outside the main section */
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex; 
+        justify-content: center; 
+        gap: 20px; 
+        width: 100%;
+        max-width: 1100px;">
+
+        <!-- Box 1 -->
+        <div style="
+            flex: 1; 
+            min-width: 280px; 
+            background-color: rgba(255, 255, 255, 0.6); 
+            border-radius: 10px; 
+            padding: 30px; 
+            text-align: center; 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+            <a href="#" style="display: block; margin-bottom: 15px;">
+                <img src="img/icon 1.png" alt="Icon 1" style="width: 60px; height: 60px;">
+            </a>
+            <h3 style="font-size: 1.5rem; margin: 10px 0; color: #333;">Professional Cleaning</h3>
+            <p style="font-size: 1rem; color: #555;">
+                We offer high-quality cleaning services to restore your home's shine and freshness.
+            </p>
+        </div>
+
+        <!-- Box 2 -->
+        <div style="
+            flex: 1; 
+            min-width: 280px; 
+            background-color: rgba(255, 255, 255, 0.6); 
+            border-radius: 10px; 
+            padding: 30px; 
+            text-align: center; 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+            <a href="#" style="display: block; margin-bottom: 15px;">
+                <img src="img/icon 2.png" alt="Icon 2" style="width: 60px; height: 60px;">
+            </a>
+            <h3 style="font-size: 1.5rem; margin: 10px 0; color: #333;">Fast & Efficient</h3>
+            <p style="font-size: 1rem; color: #555;">
+                Our team works quickly and efficiently to meet your cleaning needs.
+            </p>
+        </div>
+
+        <!-- Box 3 -->
+        <div style="
+            flex: 1; 
+            min-width: 280px; 
+            background-color: rgba(255, 255, 255, 0.6); 
+            border-radius: 10px; 
+            padding: 30px; 
+            text-align: center; 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+            <a href="#" style="display: block; margin-bottom: 15px;">
+                <img src="img/icon 3.png" alt="Icon 3" style="width: 60px; height: 60px;">
+            </a>
+            <h3 style="font-size: 1.5rem; margin: 10px 0; color: #333;">Trusted Service</h3>
+            <p style="font-size: 1rem; color: #555;">
+                A trusted team of experts ensures the best service experience for you.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Meet Our Team Section -->
+<section style="padding: 80px 20px; text-align: center; background-color: #f9f9f9;">
+
+    <!-- Section Heading -->
+    <h3 style="font-size: 2.5rem; color: grey; text-transform: uppercase; margin-bottom: 10px;">
+        MEET OUR
+    </h3>
+    <h2 style="font-size: 3rem; color: darkblue; text-transform: uppercase; margin-bottom: 20px;">
+        OUR TEAM
+    </h2>
+    <p style="font-size: 1rem; color: #555; max-width: 700px; margin: 0 auto 40px;">
+        The members of our highly experienced team are dedicated to providing you with only the best service we can possibly deliver.
+    </p>
+
+    <!-- Team Image Slider -->
+    <div style="display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;">
+
+        <!-- Slider Container -->
+        <div id="team-slider" style="
+            display: flex; 
+            gap: 20px; 
+            overflow-x: auto; 
+            scroll-behavior: smooth;
+            max-width: 80%; 
+            padding: 10px;
+        ">
+            <!-- Team Member 1 -->
+            <div style="
+                flex: 0 0 auto; 
+                width: 300px; 
+                background: #fff; 
+                border-radius: 10px; 
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                text-align: center;
+                padding: 15px;">
+                <img src="img/team1.jpg" alt="Team Member 1" style="width: 100%; height: auto; border-radius: 10px;">
+                <h4 style="margin: 10px 0; color: #333; font-size: 1.2rem;">John Doe</h4>
+                <p style="color: #777; font-size: 0.9rem;">Cleaning Staff</p>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div style="
+                flex: 0 0 auto; 
+                width: 300px; 
+                background: #fff; 
+                border-radius: 10px; 
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                text-align: center;
+                padding: 15px;">
+                <img src="img/team2.jpg" alt="Team Member 2" style="width: 100%; height: auto; border-radius: 10px;">
+                <h4 style="margin: 10px 0; color: #333; font-size: 1.2rem;">Jane Smith</h4>
+                <p style="color: #777; font-size: 0.9rem;">Cleaning Staff</p>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div style="
+                flex: 0 0 auto; 
+                width: 300px; 
+                background: #fff; 
+                border-radius: 10px; 
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                text-align: center;
+                padding: 15px;">
+                <img src="img/team3.jpg" alt="Team Member 3" style="width: 100%; height: auto; border-radius: 10px;">
+                <h4 style="margin: 10px 0; color: #333; font-size: 1.2rem;">Emily Brown</h4>
+                <p style="color: #777; font-size: 0.9rem;">Cleaning Staff</p>
+            </div>
+
+            <!-- Team Member 4 (Slider will show this on scroll) -->
+            <div style="
+                flex: 0 0 auto; 
+                width: 300px; 
+                background: #fff; 
+                border-radius: 10px; 
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                text-align: center;
+                padding: 15px;">
+                <img src="img/team4.jpg" alt="Team Member 4" style="width: 100%; height: auto; border-radius: 10px;">
+                <h4 style="margin: 10px 0; color: #333; font-size: 1.2rem;">Michael Lee</h4>
+                <p style="color: #777; font-size: 0.9rem;">Cleaning staff</p>
+            </div>
+        </div>
+
+        <!-- Slide Buttons -->
+        <button onclick="slideLeft()" style="
+            position: absolute; 
+            left: 0; 
+            top: 50%; 
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: white; 
+            border: none; 
+            border-radius: 50%; 
+            padding: 10px 15px; 
+            cursor: pointer;">&#10094;</button>
+
+        <button onclick="slideRight()" style="
+            position: absolute; 
+            right: 0; 
+            top: 50%; 
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: white; 
+            border: none; 
+            border-radius: 50%; 
+            padding: 10px 15px; 
+            cursor: pointer;">&#10095;</button>
+    </div>
+</section>
+
+<!-- JavaScript for Slider -->
+<script>
+    const slider = document.getElementById('team-slider');
+
+    function slideLeft() {
+        slider.scrollLeft -= 350; // Scrolls to the left
+    }
+
+    function slideRight() {
+        slider.scrollLeft += 350; // Scrolls to the right
+    }
+</script>
+
+<section>
+    <div class="recent-news">
+      <h2>Recent News</h2>
+      <p>We specialise in intelligent & effective Search and believe in the power of partnerships to grow business.</p>
+  
+      <div class="news-items">
+        <!-- News Item 1 -->
+        <div class="news-item">
+          <div class="news-date">
+            <span class="date">12</span>
+            <span class="month">Nov</span>
+          </div>
+          <img src="img\news1.jpg" alt="News Image 1">
+          <div class="news-content">
+            <span class="category">CLEANING</span>
+            <h3>Temporary Ruling Issued</h3>
+            <p>Washla has met the demands of a growing world cleaning tremendous.</p>
+            <div class="author">
+              <img src="img\author1.jpeg" alt="Martha Smith">
+              <span>Martha Smith</span>
+              <span>Washla CEO</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- News Item 2 -->
+        <div class="news-item">
+          <div class="news-date">
+            <span class="date">11</span>
+            <span class="month">Nov</span>
+          </div>
+          <img src="img\news2.jpg" alt="News Image 2">
+          <div class="news-content">
+            <span class="category">CLEANING</span>
+            <h3>The Expands California</h3>
+            <p>Welcomed and every sed ut perspiciatis unde iste natus.</p>
+            <div class="author">
+              <img src="img\author2.jpeg" alt="Laura Jones">
+              <span>Laura Jones</span>
+              <span>Accounting</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- News Item 3 -->
+        <div class="news-item">
+          <div class="news-date">
+            <span class="date">10</span>
+            <span class="month">Nov</span>
+          </div>
+          <img src="img\news3.jpg" alt="News Image 3">
+          <div class="news-content">
+            <span class="category">CLEANING</span>
+            <h3>Temporary Ruling Issued</h3>
+            <p>Washla has met the demands of a growing world. The Cleaning.</p>
+            <div class="author">
+              <img src="img\author3.png" alt="Matt Ryan">
+              <span>Matt Ryan</span>
+              <span>Lawyer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section logo-section">
+          <img src="img\logo1.png" alt="Amiso Logo">
+          <p>Washla customers has a tremendous opportunity to answer the call of logistic.</p>
+        </div>
+  
+        <div class="footer-section contact-section">
+          <h3>Get In Touch</h3>
+          <p>8273 NW 56th ST Miami, Florida, 33195 United States</p>
+          <p>info@amiso.com</p>
+          <p>052 5401 3322</p>
+        </div>
+  
+        <div class="footer-section links-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Services</li>
+            <li>Team</li>
+            <li>FAQ</li>
+            <li>Contact Us</li>
+            <li>Gallery</li>
+            <li>Blogs</li>
+          </ul>
+        </div>
+  
+        <div class="footer-section newsletter-section">
+          <h3>Our Newsletter</h3>
+          <p>Subscribe to our newsletter to receive the latest news about our services.</p>
+          <form>
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <p>&copy; 2023 amiso all rights reserved.</p>
+        <div class="social-icons">
+          <span>Facebook</span>
+          <span>Twitter</span>
+          <span>Instagram</span>
+          <span>LinkedIn</span>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+    </main>
+</body>
+</html>
